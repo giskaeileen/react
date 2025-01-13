@@ -22,6 +22,7 @@ import IconXCircle from '../../components/Icon/IconXCircle';
 import IconTrashLines from '../../components/Icon/IconTrashLines';
 import IconCode from '../../components/Icon/IconCode';
 import IconX from '../../components/Icon/IconX';
+import IconInfoCircle from '../../components/Icon/IconInfoCircle';
 import IconUser from '../../components/Icon/IconUser';
 import IconAt from '../../components/Icon/IconAt';
 import IconLock from '../../components/Icon/IconLock';
@@ -622,8 +623,7 @@ const Basic = () => {
             <div className="panel mt-6">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-5 gap-5">
                     {/* Header dengan tombol di kanan */}
-                    <h5 className="font-bold text-lg dark:text-white-light">Data Cabang</h5>
-                    <button type="button" className="btn btn-primary rounded-full flex items-center" onClick={() => setModal1(true)}><IconPlus className="w-4 h-4 mr-1" /> Tambah Data Cabang</button>
+                    <h5 className="font-bold text-lg dark:text-white-light">Data Cabang - Nama Perusahaan</h5>
                 </div>
 
                 {/* Kolom pencarian */}
@@ -651,15 +651,9 @@ const Basic = () => {
                                 titleClassName: '!text-center',
                                 render: () => (
                                     <div className="flex items-center w-max mx-auto gap-2">
-                                        <Tippy content="Edit">
-                                            <button type="button" className="text-success"  onClick={() => setModal2(true)}>
-                                                <IconPencil /> 
-                                            </button>
-                                        </Tippy>
-
-                                        <Tippy content="Delete">
-                                            <button type="button" className="text-danger">
-                                                <IconTrashLines />
+                                        <Tippy content="Detail">
+                                            <button type="button" className="text-primary"  onClick={() => setModal2(true)}>
+                                                <IconInfoCircle />
                                             </button>
                                         </Tippy>
                                     </div>
@@ -690,7 +684,7 @@ const Basic = () => {
                                 <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="ease-in duration-200" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
                                     <Dialog.Panel as="div" className="panel my-8 w-full max-w-lg overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
                                         <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
-                                            <div className="text-lg font-bold">Tambah Data Cabang</div>
+                                            <div className="text-lg font-bold">Detail Data Cabang</div>
                                             <button type="button" className="text-white-dark hover:text-dark" onClick={() => setModal1(false)}>
                                                 <IconX />
                                             </button>
@@ -706,7 +700,6 @@ const Basic = () => {
                                                     <label htmlFor="produk" className="text-sm inline-block">
                                                         Nama Cabang
                                                     </label>
-                                                    <p className="text-sm text-danger inline-block ml-1">*</p>
                                                     <input type="text" placeholder="Masukkan Nama Produk" className="form-input rounded-xl" required />
                                                 </div>
                                                 {/* <button type="submit" className="btn btn-primary mt-6">

@@ -103,6 +103,7 @@ const Produk = lazy(() => import('../pages/Admin/Produk'));
 const Kasir = lazy(() => import('../pages/Admin/Kasir'));
 const Cabang = lazy(() => import('../pages/Admin/Cabang'));
 const Perusahaan = lazy(() => import('../pages/SuperAdmin/Perusahaan'));
+const DataCabang = lazy(() => import('../pages/SuperAdmin/DataCabang'));
 const Transaksi = lazy(() => import('../pages/Kasir/Transaksi'));
 
 const routes = [
@@ -144,6 +145,11 @@ const routes = [
     {
         path: '/perusahaan',
         element: <Perusahaan />,
+    },
+    // Perusahaan page
+    {
+        path: '/data-cabang',
+        element: <DataCabang />,
     },
     // finance page
     {

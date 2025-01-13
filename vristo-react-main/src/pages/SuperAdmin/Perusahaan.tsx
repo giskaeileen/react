@@ -652,7 +652,7 @@ const Basic = () => {
                                 render: () => (
                                     <div className="flex items-center w-max mx-auto gap-2">
                                       {/* <button type="button" className="btn btn-outline-primary rounded-full">Cabang</button> */}
-                                        <Link to="/apps/invoice/add">
+                                        <Link to="/data-cabang">
                                           <button type="button" className="btn btn-outline-primary rounded-full">Cabang</button>
                                         </Link>
                                     </div>
