@@ -3,31 +3,19 @@ import { useEffect, Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPageTitle } from '../../store/themeConfigSlice';
 import sortBy from 'lodash/sortBy';
-import IconBell from '../../components/Icon/IconBell';
 import IconPlus from '../../components/Icon/IconPlus';
 import IconPencil from '../../components/Icon/IconPencil';
 import { Link } from 'react-router-dom';
-import CodeHighlight from '../../components/Highlight';
 import { Dialog, Transition } from '@headlessui/react';
 import { IRootState } from '../../store';
-import { Tab } from '@headlessui/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Navigation, Pagination } from 'swiper';
+import Swal from 'sweetalert2';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import IconXCircle from '../../components/Icon/IconXCircle';
 import IconTrashLines from '../../components/Icon/IconTrashLines';
-import IconCode from '../../components/Icon/IconCode';
 import IconX from '../../components/Icon/IconX';
-import IconUser from '../../components/Icon/IconUser';
-import IconAt from '../../components/Icon/IconAt';
-import IconLock from '../../components/Icon/IconLock';
-import IconFacebook from '../../components/Icon/IconFacebook';
-import IconGithub from '../../components/Icon/IconGithub';
-import IconCaretDown from '../../components/Icon/IconCaretDown';
 const rowData = [
     {
         id: 1,
@@ -533,10 +521,6 @@ const rowData = [
 
 const Basic = () => {
     const dispatch = useDispatch();
-    // useEffect(() => {
-    //     dispatch(setPageTitle('Basic Table'));
-    // });
-
     useEffect(() => {
         dispatch(setPageTitle('Order Sorting Table'));
     });
@@ -578,7 +562,7 @@ const Basic = () => {
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search]);
-
+    
     useEffect(() => {
         const data = sortBy(initialRecords, sortStatus.columnAccessor);
         setInitialRecords(sortStatus.direction === 'desc' ? data.reverse() : data);
@@ -589,39 +573,69 @@ const Basic = () => {
         useEffect(() => {
             dispatch(setPageTitle('Modals'));
         });
-        const items = ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'];
     
-        // const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
-    
-        const [codeArr, setCodeArr] = useState<string[]>([]);
-        const toggleCode = (name: string) => {
-            if (codeArr.includes(name)) {
-                setCodeArr((value) => value.filter((d) => d !== name));
-            } else {
-                setCodeArr([...codeArr, name]);
-            }
-        };
         const [modal1, setModal1] = useState(false);
         const [modal2, setModal2] = useState(false);
-        const [isEditModalOpen, setEditModalOpen] = useState(false);
     
         const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
+
+        const showAlert = async (type: number) => {
+            if (type === 10) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete',
+                    padding: '2em',
+                    customClass: 'sweet-alerts',
+                }).then((result) => {
+                    if (result.value) {
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'Your data has been deleted.',
+                            icon: 'success',
+                            customClass: 'sweet-alerts',
+                        });
+                    }
+                });
+            }
+        
+            if (type === 15) {
+                const toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                });
+                toast.fire({
+                    icon: 'success',
+                    title: 'Data berhasil ditambahkan.',
+                    padding: '10px 20px',
+                });
+            }
+
+            if (type === 16) {
+                const toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                });
+                toast.fire({
+                    icon: 'success',
+                    title: 'Data berhasil diedit.',
+                    padding: '10px 20px',
+                });
+            }
+        };
+        
 
 
     return (
         <div>
-            {/* <div className="panel flex items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
-                <div className="rounded-full bg-primary p-1.5 text-white ring-2 ring-primary/30 ltr:mr-3 rtl:ml-3">
-                    <IconBell />
-                </div>
-                <span className="ltr:mr-3 rtl:ml-3">Documentation: </span>
-                <a href="https://www.npmjs.com/package/mantine-datatable" target="_blank" className="block hover:underline">
-                    https://www.npmjs.com/package/mantine-datatable
-                </a>
-            </div> */}
             <div className="panel mt-6">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-5 gap-5">
-                    {/* Header dengan tombol di kanan */}
                     <h5 className="font-bold text-lg dark:text-white-light">Data Cabang</h5>
                     <button type="button" className="btn btn-primary rounded-full flex items-center" onClick={() => setModal1(true)}><IconPlus className="w-4 h-4 mr-1" /> Tambah Data Cabang</button>
                 </div>
@@ -631,8 +645,6 @@ const Basic = () => {
                     <input type="text" className="form-input w-full rounded-xl md:w-auto" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
                 </div>
 
-
-
                 {/* datatables */}
                 <div className="datatables">
                     <DataTable
@@ -641,10 +653,10 @@ const Basic = () => {
                         records={recordsData}
                         columns={[
                             { accessor: 'id', title: 'ID', sortable: true },
-                            { accessor: 'firstName', title: 'First Name', sortable: true },
-                            { accessor: 'lastName', title: 'Last Name', sortable: true },
+                            { accessor: 'firstName', title: 'Nama Cabang', sortable: true },
+                            { accessor: 'address', title: 'Alamat Cabang', sortable: true, render: (row) => `${row.address.street}, ${row.address.city}`, },
+                            { accessor: 'phone', title: 'Telopon Cabang', sortable: true },
                             { accessor: 'email', sortable: true },
-                            { accessor: 'phone', title: 'Phone No.', sortable: true },
                             {
                                 accessor: 'action',
                                 title: 'Action',
@@ -658,7 +670,7 @@ const Basic = () => {
                                         </Tippy>
 
                                         <Tippy content="Delete">
-                                            <button type="button" className="text-danger">
+                                            <button type="button" className="text-danger" onClick={() => showAlert(10)}>
                                                 <IconTrashLines />
                                             </button>
                                         </Tippy>
@@ -697,17 +709,31 @@ const Basic = () => {
                                         </div>
                                         <div className="p-5">
                                             <form>
-                                                {/* <div>
-                                                    <label htmlFor="produk" className="text-sm">Nama Produk</label>
-                                                    <p className="text-sm text-danger">*</p>
-                                                    <input type="text" placeholder="Some Text..." className="form-input" required />
-                                                </div> */}
                                                 <div>
-                                                    <label htmlFor="produk" className="text-sm inline-block">
-                                                        Nama Cabang
-                                                    </label>
+                                                    <input type="hidden" id="id_cabang" placeholder="Cabang" className="form-input rounded-xl" required />
+                                                </div>
+                                                <div>
+                                                    <input type="hidden" id="id_perusahaan" placeholder="Perusahaan"className="form-input rounded-xl" required />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="nama_cabang" className="text-sm inline-block">Nama Cabang</label>
                                                     <p className="text-sm text-danger inline-block ml-1">*</p>
-                                                    <input type="text" placeholder="Masukkan Nama Produk" className="form-input rounded-xl" required />
+                                                    <input type="text" id="alamat_cabang" placeholder="Masukkan Nama Cabang" className="form-input rounded-xl" required />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="alamat_cabang" className="text-sm inline-block mt-4">Alamat Cabang</label>
+                                                    <p className="text-sm text-danger inline-block ml-1">*</p>
+                                                    <textarea id="alamat_cabang" rows={3} className="form-textarea" placeholder="Masukkan Alamat Cabang" required></textarea>
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="telepon_cabang" className="text-sm inline-block mt-4">Telepon Cabang</label>
+                                                    <p className="text-sm text-danger inline-block ml-1">*</p>
+                                                    <input type="tel" placeholder="6-(666)-111-7777" className="form-input" required />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="email_cabang" className="text-sm inline-block mt-4">Email Cabang</label>
+                                                    <p className="text-sm text-danger inline-block ml-1">*</p>
+                                                    <input id="email_cabang" type="email" placeholder="name@example.com" className="form-input" required />
                                                 </div>
                                                 {/* <button type="submit" className="btn btn-primary mt-6">
                                                     Submit
@@ -717,7 +743,7 @@ const Basic = () => {
                                                 <button type="button" className="btn btn-outline-danger" onClick={() => setModal1(false)}>
                                                     Batal
                                                 </button>
-                                                <button type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4" onClick={() => setModal1(false)}>
+                                                <button type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4" onClick={() => {setModal1(false); showAlert(15);}}>
                                                     Simpan
                                                 </button>
                                             </div>
@@ -736,8 +762,7 @@ const Basic = () => {
                         </Transition.Child>
                         <div className="fixed inset-0 z-[999] overflow-y-auto bg-[black]/60">
                             <div className="flex min-h-screen items-start justify-center px-4">
-                                <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="ease-in duration-200" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95"
-                                >
+                                <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="ease-in duration-200" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
                                     <Dialog.Panel as="div" className="panel my-8 w-full max-w-lg overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
                                         <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
                                             <div className="text-lg font-bold">Edit Data Cabang</div>
@@ -748,18 +773,31 @@ const Basic = () => {
                                         <div className="p-5">
                                             <form>
                                                 <div>
-                                                    <label htmlFor="produk" className="text-sm inline-block">
-                                                        Nama Cabang
-                                                    </label>
+                                                    <label htmlFor="nama_cabang" className="text-sm inline-block">Nama Cabang</label>
                                                     <p className="text-sm text-danger inline-block ml-1">*</p>
-                                                    <input type="text" placeholder="Masukkan Nama Produk" className="form-input rounded-xl" required />
+                                                    <input type="text" id="alamat_cabang" placeholder="Masukkan Nama Cabang" className="form-input rounded-xl" required />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="alamat_cabang" className="text-sm inline-block mt-4">Alamat Cabang</label>
+                                                    <p className="text-sm text-danger inline-block ml-1">*</p>
+                                                    <textarea id="alamat_cabang" rows={3} className="form-textarea" placeholder="Masukkan Alamat Cabang" required></textarea>
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="telepon_cabang" className="text-sm inline-block mt-4">Telepon Cabang</label>
+                                                    <p className="text-sm text-danger inline-block ml-1">*</p>
+                                                    <input type="tel" placeholder="6-(666)-111-7777" className="form-input" required />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="email_cabang" className="text-sm inline-block mt-4">Email Cabang</label>
+                                                    <p className="text-sm text-danger inline-block ml-1">*</p>
+                                                    <input id="email_cabang" type="email" placeholder="name@example.com" className="form-input" required />
                                                 </div>
                                             </form>
                                             <div className="mt-8 flex items-center justify-end">
                                                 <button type="button" className="btn btn-outline-danger" onClick={() => setModal2(false)}>
                                                     Batal
                                                 </button>
-                                                <button type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4" onClick={() => setModal2(false)}>
+                                                <button type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4" onClick={() => {setModal2(false); showAlert(16);}}>
                                                     Simpan
                                                 </button>
                                             </div>
