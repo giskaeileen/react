@@ -709,12 +709,8 @@ const Basic = () => {
                                         </div>
                                         <div className="p-5">
                                             <form>
-                                                <div>
-                                                    <input type="hidden" id="id_cabang" placeholder="Cabang" className="form-input rounded-xl" required />
-                                                </div>
-                                                <div>
-                                                    <input type="hidden" id="id_perusahaan" placeholder="Perusahaan"className="form-input rounded-xl" required />
-                                                </div>
+                                                <input type="hidden" id="id_cabang" placeholder="Id Cabang" className="form-input rounded-xl" required />
+                                                <input type="hidden" id="id_perusahaan" placeholder="Id Perusahaan"className="form-input rounded-xl" required />
                                                 <div>
                                                     <label htmlFor="nama_cabang" className="text-sm inline-block">Nama Cabang</label>
                                                     <p className="text-sm text-danger inline-block ml-1">*</p>
@@ -772,25 +768,27 @@ const Basic = () => {
                                         </div>
                                         <div className="p-5">
                                             <form>
+                                                <input type="hidden" id="id_cabang" placeholder="Id Cabang" className="form-input rounded-xl" required />
+                                                <input type="hidden" id="id_perusahaan" placeholder="Id Perusahaan"className="form-input rounded-xl mt-4" required />
                                                 <div>
                                                     <label htmlFor="nama_cabang" className="text-sm inline-block">Nama Cabang</label>
                                                     <p className="text-sm text-danger inline-block ml-1">*</p>
-                                                    <input type="text" id="alamat_cabang" placeholder="Masukkan Nama Cabang" className="form-input rounded-xl" required />
+                                                    <input type="text" id="alamat_cabang" placeholder="Masukkan Nama Cabang" className="form-input rounded-xl" value="Cabang 1" required />
                                                 </div>
                                                 <div>
                                                     <label htmlFor="alamat_cabang" className="text-sm inline-block mt-4">Alamat Cabang</label>
                                                     <p className="text-sm text-danger inline-block ml-1">*</p>
-                                                    <textarea id="alamat_cabang" rows={3} className="form-textarea" placeholder="Masukkan Alamat Cabang" required></textarea>
+                                                    <textarea id="alamat_cabang" rows={3} className="form-textarea" placeholder="Masukkan Alamat Cabang" value="jalan Raya" required></textarea>
                                                 </div>
                                                 <div>
                                                     <label htmlFor="telepon_cabang" className="text-sm inline-block mt-4">Telepon Cabang</label>
                                                     <p className="text-sm text-danger inline-block ml-1">*</p>
-                                                    <input type="tel" placeholder="6-(666)-111-7777" className="form-input" required />
+                                                    <input type="tel" placeholder="6-(666)-111-7777" className="form-input" value="0-(000)-000-0000" required />
                                                 </div>
                                                 <div>
                                                     <label htmlFor="email_cabang" className="text-sm inline-block mt-4">Email Cabang</label>
                                                     <p className="text-sm text-danger inline-block ml-1">*</p>
-                                                    <input id="email_cabang" type="email" placeholder="name@example.com" className="form-input" required />
+                                                    <input id="email_cabang" type="email" placeholder="name@example.com" className="form-input" value="cabang1@example.com" required />
                                                 </div>
                                             </form>
                                             <div className="mt-8 flex items-center justify-end">
