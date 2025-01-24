@@ -666,7 +666,7 @@ const Custom = () => {
             </div> */}
             <div className="panel mt-6">
                 <div className="flex items-center flex-wrap gap-5 mb-5">
-                    <h1 className="font-bold text-xl dark:text-white-light">Data Toko</h1>
+                    <h1 className="font-bold text-xl dark:text-white-light">Store Registration</h1>
                     <div className="ml-auto flex gap-2">
                         <button
                             type="button"
