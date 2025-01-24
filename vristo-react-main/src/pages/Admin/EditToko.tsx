@@ -36,7 +36,7 @@ const Basic = () => {
     return (
         <div>
             <div className="flex items-center justify-between w-full">
-                <h5 className="font-semibold text-lg dark:text-white-light">Edit Data Toko</h5>
+                <h5 className="font-semibold text-lg dark:text-white-light">Edit Store Data</h5>
             </div>
             {/* <ul className="flex space-x-2 rtl:space-x-reverse">
                 <li>
@@ -98,12 +98,12 @@ const Basic = () => {
                             <div>
                                 <label htmlFor="store_name" className="text-sm inline-block">Store Name</label>
                                 <p className="text-sm text-danger inline-block ml-1">*</p>
-                                <input type="text" id="store_name" placeholder="Enter the shop name" className="form-input rounded-xl" required />
+                                <input type="text" id="store_name" placeholder="Enter the store name" className="form-input rounded-xl" required />
                             </div>
                             <div>
                                 <label htmlFor="address" className="text-sm inline-block mt-4">Address Store</label>
                                 <p className="text-sm text-danger inline-block ml-1">*</p>
-                                <textarea id="address_store" rows={3} className="form-textarea" placeholder="Enter the shop address" required></textarea>
+                                <textarea id="address_store" rows={3} className="form-textarea" placeholder="Enter the store address" required></textarea>
                             </div>
                             <div>
                                 <label htmlFor="owner_name" className="text-sm inline-block">Owner Name</label>
