@@ -259,6 +259,15 @@ const Sidebar = () => {
                                 </NavLink>
                             </li>
 
+                            <li className="nav-item">
+                                <NavLink to="/toko" className="group">
+                                    <div className="flex items-center">
+                                        <IconMenuChat className="group-hover:!text-primary shrink-0" />
+                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Data Toko')}</span>
+                                    </div>
+                                </NavLink>
+                            </li>
+
                             <li className="menu nav-item">
                                 <button type="button" className={`${currentMenu === 'component' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('component')}>
                                     <div className="flex items-center">
@@ -433,10 +442,10 @@ const Sidebar = () => {
                             </h2>
 
                             <li className="nav-item">
-                                <NavLink to="/perusahaan" className="group">
+                                <NavLink to="/toko-approve" className="group">
                                     <div className="flex items-center">
                                         <IconMenuChat className="group-hover:!text-primary shrink-0" />
-                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Data Perusahaan')}</span>
+                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Approve')}</span>
                                     </div>
                                 </NavLink>
                             </li>

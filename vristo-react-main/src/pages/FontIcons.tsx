@@ -326,7 +326,8 @@ const FontIcons = () => {
                                 <IconFolderMinus className="w-6 h-6" />
                             </div>
                             <div className="grid place-content-center w-14 h-14 border border-white-dark/20 dark:border-[#191e3a] rounded-md">
-                                <IconFolderPlus className="w-6 h-6" />
+                                <IconFolder
+                                 className="w-6 h-6" />
                             </div>
                             <div className="grid place-content-center w-14 h-14 border border-white-dark/20 dark:border-[#191e3a] rounded-md">
                                 <IconGallery className="w-6 h-6" />

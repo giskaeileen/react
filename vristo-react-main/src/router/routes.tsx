@@ -102,8 +102,11 @@ const Clipboard = lazy(() => import('../pages/Forms/Clipboard'));
 const Produk = lazy(() => import('../pages/Admin/Produk'));
 const Kasir = lazy(() => import('../pages/Admin/Kasir'));
 const Cabang = lazy(() => import('../pages/Admin/Cabang'));
+const Toko = lazy(() => import('../pages/Admin/Toko'));
+const CreateToko = lazy(() => import('../pages/Admin/CreateToko'));
 const Perusahaan = lazy(() => import('../pages/SuperAdmin/Perusahaan'));
 const DataCabang = lazy(() => import('../pages/SuperAdmin/DataCabang'));
+const TokoApprove = lazy(() => import('../pages/SuperAdmin/TokoApprove'));
 const Transaksi = lazy(() => import('../pages/Kasir/Transaksi'));
 
 const routes = [
@@ -150,6 +153,20 @@ const routes = [
     {
         path: '/data-cabang',
         element: <DataCabang />,
+    },
+    // Perusahaan page
+    {
+        path: '/toko',
+        element: <Toko />,
+    },
+    // Perusahaan page
+    {
+        path: '/toko-approve',
+        element: <TokoApprove />,
+    },
+    {
+        path: '/create-toko',
+        element: <CreateToko />,
     },
     // finance page
     {
