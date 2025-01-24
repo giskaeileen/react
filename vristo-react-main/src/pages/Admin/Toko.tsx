@@ -638,7 +638,22 @@ const Custom = () => {
 
     const columns = [
         { accessor: 'id', title: 'ID', sortable: true },
-        { accessor: 'firstName', title: 'Store Name', sortable: true },
+        {
+            accessor: 'firstName',
+            title: 'Store Name',
+            sortable: true,
+            render: ({ firstName, id }: { firstName: string; id: number }) => (
+                <div className="flex items-center w-max">
+                    <img
+                        className="w-9 h-9 rounded-full ltr:mr-2 rtl:ml-2 object-cover"
+                        src={`/assets/images/profile-${id}.jpeg`}
+                        alt=""
+                    />
+                    <div>{firstName}</div>
+                </div>
+            ),
+        },        
+        // { accessor: 'firstName', title: 'Store Name', sortable: true },
         {
             accessor: 'address',
             title: 'Store Address',
