@@ -36,7 +36,7 @@ const Basic = () => {
     return (
         <div>
             <div className="flex items-center justify-between w-full">
-                <h5 className="font-semibold text-lg dark:text-white-light">Create Data Toko</h5>
+                <h5 className="font-semibold text-lg dark:text-white-light">Edit Data Toko</h5>
             </div>
             {/* <ul className="flex space-x-2 rtl:space-x-reverse">
                 <li>

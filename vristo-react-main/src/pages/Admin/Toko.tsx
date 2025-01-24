@@ -1,5 +1,5 @@
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,11 +9,14 @@ import { IRootState } from '../../store';
 import Dropdown from '../../components/Dropdown';
 import IconCaretDown from '../../components/Icon/IconCaretDown';
 import Swal from 'sweetalert2';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import IconTrashLines from '../../components/Icon/IconTrashLines';
+import IconPencil from '../../components/Icon/IconPencil';
 import IconChecks from '../../components/Icon/IconChecks';
 import IconX from '../../components/Icon/IconX';
 import IconXCircle from '../../components/Icon/IconXCircle';
 import IconPlus from '../../components/Icon/IconPlus';
-
 
 
 const rowData = [
@@ -563,6 +566,7 @@ const Custom = () => {
         'lastName',
         'email',
         'phone',
+        'action',
     ]);
 
     const [selectedRecords, setSelectedRecords] = useState<any>([]);
@@ -571,6 +575,8 @@ const Custom = () => {
         columnAccessor: 'id',
         direction: 'asc',
     });
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         setPage(1);
@@ -607,6 +613,29 @@ const Custom = () => {
         );
     };
 
+    const showAlert = async (type: number) => {
+        if (type === 10) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                padding: '2em',
+                customClass: 'sweet-alerts',
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: 'Your data has been deleted.',
+                        icon: 'success',
+                        customClass: 'sweet-alerts',
+                    });
+                }
+            });
+        }
+    };
+
     const columns = [
         { accessor: 'id', title: 'ID', sortable: true },
         { accessor: 'firstName', title: 'Store Name', sortable: true },
@@ -620,28 +649,31 @@ const Custom = () => {
         { accessor: 'lastName', title: 'Owner Name', sortable: true },
         { accessor: 'email', title: 'Owner Email', sortable: true },
         { accessor: 'phone', title: 'Owner Phone', sortable: true },
-    ];
+        {
+            accessor: 'action',
+            title: 'Action',
+            titleClassName: '!text-center',
+            render: () => (
+                <div className="flex items-center w-max mx-auto gap-2">
+                    <Tippy content="Edit">
+                        <button
+                            type="button"
+                            className="text-success"
+                            onClick={() => navigate('/edit-toko')} // Navigasi ke halaman /edit-toko
+                        >
+                            <IconPencil />
+                        </button>
+                    </Tippy>
 
-    const showAlert = async (type: number) => {
-    if (type === 2) {
-        Swal.fire({
-            icon: 'success',
-            title: 'Good job!',
-            text: 'You clicked the!',
-            padding: '2em',
-            customClass: 'sweet-alerts',
-        });
-    }
-    if (type === 3) {
-        Swal.fire({
-            icon: 'success',
-            title: 'Good job!',
-            text: 'You clicked the!',
-            padding: '2em',
-            customClass: 'sweet-alerts',
-        });
-    }
-}
+                    <Tippy content="Delete">
+                        <button type="button" className="text-danger" onClick={() => showAlert(10)}>
+                            <IconTrashLines />
+                        </button>
+                    </Tippy>
+                </div>
+            ),
+        },
+    ];
 
     return (
         <div>
@@ -654,10 +686,9 @@ const Custom = () => {
             </div> */}
             <div className="panel mt-6">
                 <div className="flex items-center justify-between mb-5">
-                    <h1 className="font-bold text-xl dark:text-white-light">Data Toko</h1>
-                    <Link to="/create-toko" className="btn btn-primary gap-2">
-                        Tambah Toko
-                    </Link>
+                    <h1 className="font-bold text-xl dark:text-white-light">Store Data</h1>
+                    <button type="button" className="btn btn-primary rounded-lg flex items-center" onClick={() => navigate('/create-toko')}><IconPlus className="w-4 h-4 mr-1" /> Create Store</button>
+
                 </div>
                 <div className="flex items-center flex-wrap gap-5 mb-5">
                     <div className="dropdown">
