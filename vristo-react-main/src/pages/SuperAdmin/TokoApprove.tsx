@@ -683,7 +683,7 @@ const Custom = () => {
                     <div className="dropdown">
                         <Dropdown
                             placement={`${isRtl ? 'right-end' : 'right-start'}`}
-                            btnClassName="btn btn-white-dark btn-sm dropdown-toggle shadow-none"
+                            btnClassName="btn btn-white-dark dropdown-toggle shadow-none"
                             button={
                                 <>
                                     Columns
