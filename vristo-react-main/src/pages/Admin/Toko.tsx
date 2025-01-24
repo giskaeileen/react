@@ -664,30 +664,6 @@ const Custom = () => {
         { accessor: 'lastName', title: 'Owner Name', sortable: true },
         { accessor: 'email', title: 'Owner Email', sortable: true },
         { accessor: 'phone', title: 'Owner Phone', sortable: true },
-        {
-            accessor: 'action',
-            title: 'Action',
-            titleClassName: '!text-center',
-            render: () => (
-                <div className="flex items-center w-max mx-auto gap-2">
-                    <Tippy content="Edit">
-                        <button
-                            type="button"
-                            className="text-success"
-                            onClick={() => navigate('/edit-toko')} // Navigasi ke halaman /edit-toko
-                        >
-                            <IconPencil />
-                        </button>
-                    </Tippy>
-
-                    <Tippy content="Delete">
-                        <button type="button" className="text-danger" onClick={() => showAlert(10)}>
-                            <IconTrashLines />
-                        </button>
-                    </Tippy>
-                </div>
-            ),
-        },
     ];
 
     return (
@@ -699,12 +675,33 @@ const Custom = () => {
                     <button type="button" className="btn btn-danger rounded-xl shadow-none" onClick={() => showAlert(3)}>Tolak</button>
                 </div>
             </div> */}
-            <div className="panel mt-6">
-                <div className="flex items-center justify-between mb-5">
-                    <h1 className="font-bold text-xl dark:text-white-light">Store Data</h1>
-                    <button type="button" className="btn btn-primary rounded-lg flex items-center" onClick={() => navigate('/create-toko')}><IconPlus className="w-4 h-4 mr-1" /> Create Store</button>
-
+            <div className="flex items-center justify-between mb-5">
+                <h1 className="font-bold text-xl dark:text-white-light">Store Data</h1>
+                <div className="flex items-center gap-2 ml-auto">
+                    <button
+                        type="button"
+                        className="btn btn-primary rounded-lg flex items-center"
+                        onClick={() => navigate('/create-toko')}
+                    >
+                        <IconPlus className="w-4 h-4 mr-1" /> Create Store
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-success rounded-lg flex items-center"
+                        onClick={() => navigate('/edit-toko')}
+                    >
+                        <IconPencil className="w-4 h-4 mr-1" /> Edit Store
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-danger rounded-lg flex items-center"
+                        onClick={() => showAlert(10)}
+                    >
+                        <IconTrashLines className="w-4 h-4 mr-1" /> Delete Store
+                    </button>
                 </div>
+            </div>
+            <div className="panel mt-6">
                 <div className="flex items-center flex-wrap gap-5 mb-5">
                     <div className="dropdown">
                         <Dropdown

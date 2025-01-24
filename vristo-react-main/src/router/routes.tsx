@@ -105,6 +105,7 @@ const Cabang = lazy(() => import('../pages/Admin/Cabang'));
 const Toko = lazy(() => import('../pages/Admin/Toko'));
 const CreateToko = lazy(() => import('../pages/Admin/CreateToko'));
 const EditToko  = lazy(() => import('../pages/Admin/EditToko'));
+const AllStore = lazy(() => import('../pages/Admin/AllStore'))
 const Perusahaan = lazy(() => import('../pages/SuperAdmin/Perusahaan'));
 const DataCabang = lazy(() => import('../pages/SuperAdmin/DataCabang'));
 const TokoApprove = lazy(() => import('../pages/SuperAdmin/TokoApprove'));
@@ -172,6 +173,10 @@ const routes = [
     {
         path: '/edit-toko',
         element: <EditToko />,
+    },
+    {
+        path: '/all-store',
+        element: <AllStore />,
     },
     // finance page
     {

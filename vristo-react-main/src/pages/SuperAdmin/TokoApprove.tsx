@@ -664,21 +664,20 @@ const Custom = () => {
                     <button type="button" className="btn btn-danger rounded-xl shadow-none" onClick={() => showAlert(3)}>Tolak</button>
                 </div>
             </div> */}
-            <div className="panel mt-6">
-                <div className="flex items-center flex-wrap gap-5 mb-5">
-                    <h1 className="font-bold text-xl dark:text-white-light">Store Registration</h1>
-                    <div className="ml-auto flex gap-2">
-                        <button
-                            type="button"
-                            className="btn btn-primary rounded-xl shadow-none"
-                            onClick={() => showAlert(2)}
-                        >
-                            <IconChecks className="w-6 h-6 inline-block" />
-                            <span className="ml-2">Approved</span>
-                        </button>
-                    </div>
-
+            <div className="flex items-center flex-wrap gap-5 mb-5">
+                <h1 className="font-bold text-xl dark:text-white-light">Store Registration</h1>
+                <div className="ml-auto flex gap-2">
+                    <button
+                        type="button"
+                        className="btn btn-primary rounded-xl shadow-none"
+                        onClick={() => showAlert(2)}
+                    >
+                        <IconChecks className="w-6 h-6 inline-block" />
+                        <span className="ml-2">Approved</span>
+                    </button>
                 </div>
+            </div>
+            <div className="panel mt-6">
                 <div className="flex items-center flex-wrap gap-5 mb-5">
                     <div className="dropdown">
                         <Dropdown
