@@ -105,11 +105,13 @@ const Cabang = lazy(() => import('../pages/Admin/Cabang'));
 const Toko = lazy(() => import('../pages/Admin/Toko'));
 const CreateToko = lazy(() => import('../pages/Admin/CreateToko'));
 const EditToko  = lazy(() => import('../pages/Admin/EditToko'));
-const AllStore = lazy(() => import('../pages/Admin/AllStore'))
+const AllStore = lazy(() => import('../pages/Admin/AllStore'));
+const DetailStore = lazy(() => import('../pages/Admin/DetailStore'));
 const Perusahaan = lazy(() => import('../pages/SuperAdmin/Perusahaan'));
 const DataCabang = lazy(() => import('../pages/SuperAdmin/DataCabang'));
 const TokoApprove = lazy(() => import('../pages/SuperAdmin/TokoApprove'));
 const Transaksi = lazy(() => import('../pages/Kasir/Transaksi'));
+const SettingSingle = lazy(() => import('../pages/Kasir/SettingSingle'));
 
 const routes = [
     // dashboard
@@ -177,6 +179,14 @@ const routes = [
     {
         path: '/all-store',
         element: <AllStore />,
+    },
+    {
+        path: '/detail-store',
+        element: <DetailStore />,
+    },
+    {
+        path: '/setting-single',
+        element: <SettingSingle />,
     },
     // finance page
     {

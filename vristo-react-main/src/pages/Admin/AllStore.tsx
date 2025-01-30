@@ -3,6 +3,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../store/themeConfigSlice';
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import IconUserPlus from '../../components/Icon/IconUserPlus';
 import IconListCheck from '../../components/Icon/IconListCheck';
 import IconLayoutGrid from '../../components/Icon/IconLayoutGrid';
@@ -20,8 +22,9 @@ const Contacts = () => {
         dispatch(setPageTitle('Contacts'));
     });
     const [addContactModal, setAddContactModal] = useState<any>(false);
+    const navigate = useNavigate();
 
-    const [value, setValue] = useState<any>('list');
+    const [value, setValue] = useState<any>('grid');
     const [defaultParams] = useState({
         id: null,
         name: '',
@@ -48,9 +51,9 @@ const Contacts = () => {
             email: 'alan@mail.com',
             location: 'Boston, USA',
             phone: '+1 202 555 0197',
-            posts: 25,
-            followers: '5K',
-            following: 500,
+            income: '25.000',
+            profit: '5.000',
+            expenses: '5.000',
         },
         {
             id: 2,
@@ -60,9 +63,9 @@ const Contacts = () => {
             email: 'linda@mail.com',
             location: 'Sydney, Australia',
             phone: '+1 202 555 0170',
-            posts: 25,
-            followers: '21.5K',
-            following: 350,
+            income: '25.000',
+            profit: '21.500',
+            expenses: '3.500',
         },
         {
             id: 3,
@@ -72,9 +75,9 @@ const Contacts = () => {
             email: 'lila@mail.com',
             location: 'Miami, USA',
             phone: '+1 202 555 0105',
-            posts: 20,
-            followers: '21.5K',
-            following: 350,
+            income: '21.000',
+            profit: '21.500',
+            expenses: '3.500',
         },
         {
             id: 4,
@@ -84,9 +87,9 @@ const Contacts = () => {
             email: 'andy@mail.com',
             location: 'Tokyo, Japan',
             phone: '+1 202 555 0194',
-            posts: 25,
-            followers: '21.5K',
-            following: 300,
+            income: '25.000',
+            profit: '21.500',
+            expenses: '3.000',
         },
         {
             id: 5,
@@ -96,9 +99,9 @@ const Contacts = () => {
             email: 'jesse@mail.com',
             location: 'Edinburgh, UK',
             phone: '+1 202 555 0161',
-            posts: 30,
-            followers: '20K',
-            following: 350,
+            income: '3.000',
+            profit: '20.000',
+            expenses: '3.000',
         },
         {
             id: 6,
@@ -108,9 +111,9 @@ const Contacts = () => {
             email: 'xavier@mail.com',
             location: 'New York, USA',
             phone: '+1 202 555 0155',
-            posts: 25,
-            followers: '21.5K',
-            following: 350,
+            income: '25.000',
+            profit: '21.500',
+            expenses: '3.500',
         },
         {
             id: 7,
@@ -120,9 +123,9 @@ const Contacts = () => {
             email: 'susan@mail.com',
             location: 'Miami, USA',
             phone: '+1 202 555 0118',
-            posts: 40,
-            followers: '21.5K',
-            following: 350,
+            income: '40.000',
+            profit: '21.500',
+            expenses: '3.500',
         },
         {
             id: 8,
@@ -132,9 +135,9 @@ const Contacts = () => {
             email: 'traci@mail.com',
             location: 'Edinburgh, UK',
             phone: '+1 202 555 0135',
-            posts: 25,
-            followers: '21.5K',
-            following: 350,
+            income: '25.000',
+            profit: '21.500',
+            expenses: '3.500',
         },
         {
             id: 9,
@@ -144,9 +147,9 @@ const Contacts = () => {
             email: 'sokol@verizon.net',
             location: 'Monrovia, US',
             phone: '+1 202 555 0100',
-            posts: 40,
-            followers: '21.8K',
-            following: 300,
+            income: '40.000',
+            profit: '21.800',
+            expenses: '3.000',
         },
         {
             id: 10,
@@ -156,9 +159,9 @@ const Contacts = () => {
             email: 'sravani@comcast.net',
             location: 'Michigan, US',
             phone: '+1 202 555 0134',
-            posts: 100,
-            followers: '28K',
-            following: 520,
+            income: '1.000',
+            profit: '28.000',
+            expenses: '5.200',
         },
         {
             id: 11,
@@ -168,9 +171,9 @@ const Contacts = () => {
             email: 'drhyde@gmail.com',
             location: 'Entrimo, Spain',
             phone: '+1 202 555 0153',
-            posts: 35,
-            followers: '25K',
-            following: 500,
+            income: '3.500',
+            profit: '25.000',
+            expenses: '5.000',
         },
         {
             id: 12,
@@ -180,9 +183,9 @@ const Contacts = () => {
             email: 'maikelnai@optonline.net',
             location: 'Lublin, Poland',
             phone: '+1 202 555 0115',
-            posts: 21,
-            followers: '5K',
-            following: 200,
+            income: '21.000',
+            profit: '5.000',
+            expenses: '2.000',
         },
     ]);
 
@@ -279,14 +282,14 @@ const Contacts = () => {
     return (
         <div>
             <div className="flex items-center justify-between flex-wrap gap-4">
-                <h2 className="text-xl">Contacts</h2>
+                <h2 className="text-xl font-bold">All Store</h2>
                 <div className="flex sm:flex-row flex-col sm:items-center sm:gap-3 gap-4 w-full sm:w-auto">
                     <div className="flex gap-3">
                         <div>
-                            <button type="button" className="btn btn-primary" onClick={() => editUser()}>
+                            {/* <button type="button" className="btn btn-primary" onClick={() => editUser()}>
                                 <IconUserPlus className="ltr:mr-2 rtl:ml-2" />
                                 Add Contact
-                            </button>
+                            </button> */}
                         </div>
                         <div>
                             <button type="button" className={`btn btn-outline-primary p-2 ${value === 'list' && 'bg-primary text-white'}`} onClick={() => setValue('list')}>
@@ -313,7 +316,7 @@ const Contacts = () => {
                         <table className="table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Store Name</th>
                                     <th>Email</th>
                                     <th>Location</th>
                                     <th>Phone</th>
@@ -347,11 +350,8 @@ const Contacts = () => {
                                             <td className="whitespace-nowrap">{contact.phone}</td>
                                             <td>
                                                 <div className="flex gap-4 items-center justify-center">
-                                                    <button type="button" className="btn btn-sm btn-outline-primary" onClick={() => editUser(contact)}>
-                                                        Edit
-                                                    </button>
-                                                    <button type="button" className="btn btn-sm btn-outline-danger" onClick={() => deleteUser(contact)}>
-                                                        Delete
+                                                    <button type="button" className="btn btn-sm btn-outline-primary" onClick={() => navigate("/detail-store")}>
+                                                        Detail
                                                     </button>
                                                 </div>
                                             </td>
@@ -368,164 +368,48 @@ const Contacts = () => {
                 <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 mt-5 w-full">
                     {filteredItems.map((contact: any) => {
                         return (
-                            <div className="bg-white dark:bg-[#1c232f] rounded-md overflow-hidden text-center shadow relative" key={contact.id}>
-                                <div className="bg-white dark:bg-[#1c232f] rounded-md overflow-hidden text-center shadow relative">
-                                    <div
-                                        className="bg-white/40 rounded-t-md bg-center bg-cover p-6 pb-0 bg-"
-                                        style={{
-                                            backgroundImage: `url('/assets/images/notification-bg.png')`,
-                                            backgroundRepeat: 'no-repeat',
-                                            width: '100%',
-                                            height: '100%',
-                                        }}
-                                    >
-                                        <img className="object-contain w-4/5 max-h-40 mx-auto" src={`/assets/images/${contact.path}`} alt="contact_image" />
+                        <div className="shadow-md bg-white dark:bg-gray-900 rounded-md px-4 py-6 w-full max-w-md mx-auto">
+                            <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                                {contact.path && (
+                                    <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                                        <img src={`/assets/images/${contact.path}`} className="w-full h-full object-cover" alt={contact.name} />
                                     </div>
-                                    <div className="px-6 pb-24 -mt-10 relative">
-                                        <div className="shadow-md bg-white dark:bg-gray-900 rounded-md px-2 py-4">
-                                            <div className="text-xl">{contact.name}</div>
-                                            <div className="text-white-dark">{contact.role}</div>
-                                            <div className="flex items-center justify-between flex-wrap mt-6 gap-3">
-                                                <div className="flex-auto">
-                                                    <div className="text-info">{contact.posts}</div>
-                                                    <div>Posts</div>
-                                                </div>
-                                                <div className="flex-auto">
-                                                    <div className="text-info">{contact.following}</div>
-                                                    <div>Following</div>
-                                                </div>
-                                                <div className="flex-auto">
-                                                    <div className="text-info">{contact.followers}</div>
-                                                    <div>Followers</div>
-                                                </div>
-                                            </div>
-                                            <div className="mt-4">
-                                                <ul className="flex space-x-4 rtl:space-x-reverse items-center justify-center">
-                                                    <li>
-                                                        <button type="button" className="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                            <IconFacebook />
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <button type="button" className="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                            <IconInstagram />
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <button type="button" className="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                            <IconLinkedin />
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <button type="button" className="btn btn-outline-primary p-0 h-7 w-7 rounded-full">
-                                                            <IconTwitter />
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="mt-6 grid grid-cols-1 gap-4 ltr:text-left rtl:text-right">
-                                            <div className="flex items-center">
-                                                <div className="flex-none ltr:mr-2 rtl:ml-2">Email :</div>
-                                                <div className="truncate text-white-dark">{contact.email}</div>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <div className="flex-none ltr:mr-2 rtl:ml-2">Phone :</div>
-                                                <div className="text-white-dark">{contact.phone}</div>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <div className="flex-none ltr:mr-2 rtl:ml-2">Address :</div>
-                                                <div className="text-white-dark">{contact.location}</div>
-                                            </div>
-                                        </div>
+                                )}
+                                    {/* <div>
+                                        <div className="text-xl font-bold">{contact.name}</div>
+                                        <div className="text-white-dark">{contact.location}</div>
+                                    </div> */}
+                                <div>
+                                    <div className="text-xl font-semibold">
+                                        <Link to="/detail-store" className="hover:underline">
+                                            {contact.name}
+                                        </Link>
                                     </div>
-                                    <div className="mt-6 flex gap-4 absolute bottom-0 w-full ltr:left-0 rtl:right-0 p-6">
-                                        <button type="button" className="btn btn-outline-primary w-1/2" onClick={() => editUser(contact)}>
-                                            Edit
-                                        </button>
-                                        <button type="button" className="btn btn-outline-danger w-1/2" onClick={() => deleteUser(contact)}>
-                                            Delete
-                                        </button>
-                                    </div>
+                                    <div className="text-white-dark">{contact.location}</div>
                                 </div>
                             </div>
+                            <div className="flex items-center justify-between flex-wrap mt-6 gap-3">
+                                <div className="flex-auto text-center">
+                                    <div className="text-info text-lg font-semibold">{contact.income}</div>
+                                    <div className="text-sm text-gray-500">income</div>
+                                </div>
+                                <div className="flex-auto text-center">
+                                    <div className="text-info text-lg font-semibold">{contact.profit}</div>
+                                    <div className="text-sm text-gray-500">Profit</div>
+                                </div>
+                                <div className="flex-auto text-center">
+                                    <div className="text-info text-lg font-semibold">{contact.expenses}</div>
+                                    <div className="text-sm text-gray-500">Expenses</div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         );
                     })}
                 </div>
             )}
 
-            <Transition appear show={addContactModal} as={Fragment}>
-                <Dialog as="div" open={addContactModal} onClose={() => setAddContactModal(false)} className="relative z-[51]">
-                    <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
-                        <div className="fixed inset-0 bg-[black]/60" />
-                    </Transition.Child>
-                    <div className="fixed inset-0 overflow-y-auto">
-                        <div className="flex min-h-full items-center justify-center px-4 py-8">
-                            <Transition.Child
-                                as={Fragment}
-                                enter="ease-out duration-300"
-                                enterFrom="opacity-0 scale-95"
-                                enterTo="opacity-100 scale-100"
-                                leave="ease-in duration-200"
-                                leaveFrom="opacity-100 scale-100"
-                                leaveTo="opacity-0 scale-95"
-                            >
-                                <Dialog.Panel className="panel border-0 p-0 rounded-lg overflow-hidden w-full max-w-lg text-black dark:text-white-dark">
-                                    <button
-                                        type="button"
-                                        onClick={() => setAddContactModal(false)}
-                                        className="absolute top-4 ltr:right-4 rtl:left-4 text-gray-400 hover:text-gray-800 dark:hover:text-gray-600 outline-none"
-                                    >
-                                        <IconX />
-                                    </button>
-                                    <div className="text-lg font-medium bg-[#fbfbfb] dark:bg-[#121c2c] ltr:pl-5 rtl:pr-5 py-3 ltr:pr-[50px] rtl:pl-[50px]">
-                                        {params.id ? 'Edit Contact' : 'Add Contact'}
-                                    </div>
-                                    <div className="p-5">
-                                        <form>
-                                            <div className="mb-5">
-                                                <label htmlFor="name">Name</label>
-                                                <input id="name" type="text" placeholder="Enter Name" className="form-input" value={params.name} onChange={(e) => changeValue(e)} />
-                                            </div>
-                                            <div className="mb-5">
-                                                <label htmlFor="email">Email</label>
-                                                <input id="email" type="email" placeholder="Enter Email" className="form-input" value={params.email} onChange={(e) => changeValue(e)} />
-                                            </div>
-                                            <div className="mb-5">
-                                                <label htmlFor="number">Phone Number</label>
-                                                <input id="phone" type="text" placeholder="Enter Phone Number" className="form-input" value={params.phone} onChange={(e) => changeValue(e)} />
-                                            </div>
-                                            <div className="mb-5">
-                                                <label htmlFor="occupation">Occupation</label>
-                                                <input id="role" type="text" placeholder="Enter Occupation" className="form-input" value={params.role} onChange={(e) => changeValue(e)} />
-                                            </div>
-                                            <div className="mb-5">
-                                                <label htmlFor="address">Address</label>
-                                                <textarea
-                                                    id="location"
-                                                    rows={3}
-                                                    placeholder="Enter Address"
-                                                    className="form-textarea resize-none min-h-[130px]"
-                                                    value={params.location}
-                                                    onChange={(e) => changeValue(e)}
-                                                ></textarea>
-                                            </div>
-                                            <div className="flex justify-end items-center mt-8">
-                                                <button type="button" className="btn btn-outline-danger" onClick={() => setAddContactModal(false)}>
-                                                    Cancel
-                                                </button>
-                                                <button type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4" onClick={saveUser}>
-                                                    {params.id ? 'Update' : 'Add'}
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </Dialog.Panel>
-                            </Transition.Child>
-                        </div>
-                    </div>
-                </Dialog>
-            </Transition>
         </div>
     );
 };

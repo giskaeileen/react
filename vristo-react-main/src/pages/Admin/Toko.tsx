@@ -566,7 +566,6 @@ const Custom = () => {
         'lastName',
         'email',
         'phone',
-        'action',
     ]);
 
     const [selectedRecords, setSelectedRecords] = useState<any>([]);
