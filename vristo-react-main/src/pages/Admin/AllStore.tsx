@@ -1,20 +1,13 @@
 import { useState, Fragment, useEffect } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../store/themeConfigSlice';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import IconUserPlus from '../../components/Icon/IconUserPlus';
 import IconListCheck from '../../components/Icon/IconListCheck';
 import IconLayoutGrid from '../../components/Icon/IconLayoutGrid';
 import IconSearch from '../../components/Icon/IconSearch';
 import IconUser from '../../components/Icon/IconUser';
-import IconFacebook from '../../components/Icon/IconFacebook';
-import IconInstagram from '../../components/Icon/IconInstagram';
-import IconLinkedin from '../../components/Icon/IconLinkedin';
-import IconTwitter from '../../components/Icon/IconTwitter';
-import IconX from '../../components/Icon/IconX';
 
 const Contacts = () => {
     const dispatch = useDispatch();
