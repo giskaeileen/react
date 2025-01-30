@@ -21,7 +21,6 @@ const Contacts = () => {
     useEffect(() => {
         dispatch(setPageTitle('Contacts'));
     });
-    const [addContactModal, setAddContactModal] = useState<any>(false);
     const navigate = useNavigate();
 
     const [value, setValue] = useState<any>('grid');
@@ -35,11 +34,6 @@ const Contacts = () => {
     });
 
     const [params, setParams] = useState<any>(JSON.parse(JSON.stringify(defaultParams)));
-
-    const changeValue = (e: any) => {
-        const { value, id } = e.target;
-        setParams({ ...params, [id]: value });
-    };
 
     const [search, setSearch] = useState<any>('');
     const [contactList] = useState<any>([
@@ -198,71 +192,6 @@ const Contacts = () => {
             });
         });
     }, [search, contactList]);
-
-    const saveUser = () => {
-        if (!params.name) {
-            showMessage('Name is required.', 'error');
-            return true;
-        }
-        if (!params.email) {
-            showMessage('Email is required.', 'error');
-            return true;
-        }
-        if (!params.phone) {
-            showMessage('Phone is required.', 'error');
-            return true;
-        }
-        if (!params.role) {
-            showMessage('Occupation is required.', 'error');
-            return true;
-        }
-
-        if (params.id) {
-            //update user
-            let user: any = filteredItems.find((d: any) => d.id === params.id);
-            user.name = params.name;
-            user.email = params.email;
-            user.phone = params.phone;
-            user.role = params.role;
-            user.location = params.location;
-        } else {
-            //add user
-            let maxUserId = filteredItems.length ? filteredItems.reduce((max: any, character: any) => (character.id > max ? character.id : max), filteredItems[0].id) : 0;
-
-            let user = {
-                id: maxUserId + 1,
-                path: 'profile-35.png',
-                name: params.name,
-                email: params.email,
-                phone: params.phone,
-                role: params.role,
-                location: params.location,
-                posts: 20,
-                followers: '5K',
-                following: 500,
-            };
-            filteredItems.splice(0, 0, user);
-            //   searchContacts();
-        }
-
-        showMessage('User has been saved successfully.');
-        setAddContactModal(false);
-    };
-
-    const editUser = (user: any = null) => {
-        const json = JSON.parse(JSON.stringify(defaultParams));
-        setParams(json);
-        if (user) {
-            let json1 = JSON.parse(JSON.stringify(user));
-            setParams(json1);
-        }
-        setAddContactModal(true);
-    };
-
-    const deleteUser = (user: any = null) => {
-        setFilteredItems(filteredItems.filter((d: any) => d.id !== user.id));
-        showMessage('User has been deleted successfully.');
-    };
 
     const showMessage = (msg = '', type = 'success') => {
         const toast: any = Swal.mixin({
