@@ -107,6 +107,7 @@ const CreateToko = lazy(() => import('../pages/Admin/CreateToko'));
 const EditToko  = lazy(() => import('../pages/Admin/EditToko'));
 const AllStore = lazy(() => import('../pages/Admin/AllStore'));
 const DetailStore = lazy(() => import('../pages/Admin/DetailStore'));
+const Report = lazy(() => import('../pages/Admin/Report'));
 const Perusahaan = lazy(() => import('../pages/SuperAdmin/Perusahaan'));
 const DataCabang = lazy(() => import('../pages/SuperAdmin/DataCabang'));
 const TokoApprove = lazy(() => import('../pages/SuperAdmin/TokoApprove'));
@@ -187,6 +188,10 @@ const routes = [
     {
         path: '/setting-single',
         element: <SettingSingle />,
+    },
+    {
+        path: '/report',
+        element: <Report />,
     },
     // finance page
     {
