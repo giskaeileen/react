@@ -217,7 +217,7 @@ const showAlert = async (type: number) => {
                         <div>
                             <form className="panel">
                                 <div className="flex items-center justify-between mb-5">
-                                    <h6 className="text-lg font-bold">General Information</h6>
+                                    <h6 className="text-lg font-bold">Store Information</h6>
                                     <button type="button" className="btn btn-primary flex items-center" onClick={() => setModal1(true)}>
                                         <IconBox className="ltr:mr-2 rtl:ml-2" />
                                     {/* <IconUserPlus className="ltr:mr-2 rtl:ml-2" />  */}

@@ -113,6 +113,8 @@ const DataCabang = lazy(() => import('../pages/SuperAdmin/DataCabang'));
 const TokoApprove = lazy(() => import('../pages/SuperAdmin/TokoApprove'));
 const Transaksi = lazy(() => import('../pages/Kasir/Transaksi'));
 const SettingSingle = lazy(() => import('../pages/Kasir/SettingSingle'));
+const SettingEmployee = lazy(() => import('../pages/Kasir/SettingEmployee'));
+const SettingStore = lazy(() => import('../pages/Admin/SettingStore'));
 
 const routes = [
     // dashboard
@@ -192,6 +194,14 @@ const routes = [
     {
         path: '/report',
         element: <Report />,
+    },
+    {
+        path: '/setting-employee',
+        element: <SettingEmployee />,
+    },
+    {
+        path: '/setting-store',
+        element: <SettingStore />,
     },
     // finance page
     {
