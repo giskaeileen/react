@@ -328,13 +328,13 @@ const Index = () => {
                           <span className="block text-sm font-normal text-white-dark">Total Sales</span>
                         </h5>
                       </div>
-                      <div className="flex items-center px-5 pb-5">
-                        <span className="flex items-center text-sm">
-                          <IconTrendingUp className="text-success mr-1" />
-                          <span className="text-success">8.5%</span>
-                          <span className="text-white-dark ml-1">Up from yesterday</span>
-                        </span>
-                      </div>
+                        <div className="flex items-center px-5 pb-5">
+                            <span className="flex items-center text-sm">
+                                <IconTrendingUp className="text-danger mr-1 rotate-180" />
+                                <span className="text-danger">8.5%</span>
+                                <span className="text-white-dark ml-1">Down from yesterday</span>
+                            </span>
+                        </div>
                     </div>
                     <div className="panel h-full p-0">
                       <div className="flex items-center justify-between w-full p-5">
