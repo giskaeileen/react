@@ -115,6 +115,9 @@ const Transaksi = lazy(() => import('../pages/Kasir/Transaksi'));
 const SettingSingle = lazy(() => import('../pages/Kasir/SettingSingle'));
 const SettingEmployee = lazy(() => import('../pages/Kasir/SettingEmployee'));
 const SettingStore = lazy(() => import('../pages/Admin/SettingStore'));
+const DashboardAdmin = lazy(() => import('../pages/Admin/DashboardAdmin'));
+const Riwayat = lazy(() => import('../pages/Admin/Riwayat'));
+const RiwayatDetail = lazy(() => import('../pages/Admin/RiwayatDetail'));
 
 const routes = [
     // dashboard
@@ -202,6 +205,18 @@ const routes = [
     {
         path: '/setting-store',
         element: <SettingStore />,
+    },
+    {
+        path: '/dashboard-admin',
+        element: <DashboardAdmin />,
+    },
+    {
+        path: '/riwayat',
+        element: <Riwayat />,
+    },
+    {
+        path: '/riwayat-detail',
+        element: <RiwayatDetail />,
     },
     // finance page
     {

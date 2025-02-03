@@ -258,6 +258,15 @@ const Sidebar = () => {
                             </h2>
 
                             <li className="nav-item">
+                                <NavLink to="/dashboard-admin" className="group">
+                                    <div className="flex items-center">
+                                        <IconMenuChat className="group-hover:!text-primary shrink-0" />
+                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Dashboard Admin')}</span>
+                                    </div>
+                                </NavLink>
+                            </li>
+
+                            <li className="nav-item">
                                 <NavLink to="/kasir" className="group">
                                     <div className="flex items-center">
                                         <IconMenuChat className="group-hover:!text-primary shrink-0" />
@@ -307,6 +316,15 @@ const Sidebar = () => {
                                     <div className="flex items-center">
                                         <IconMenuChat className="group-hover:!text-primary shrink-0" />
                                         <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Setting Store')}</span>
+                                    </div>
+                                </NavLink>
+                            </li>
+
+                            <li className="nav-item">
+                                <NavLink to="/riwayat" className="group">
+                                    <div className="flex items-center">
+                                        <IconMenuChat className="group-hover:!text-primary shrink-0" />
+                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Riwayat')}</span>
                                     </div>
                                 </NavLink>
                             </li>
