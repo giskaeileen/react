@@ -118,6 +118,7 @@ const SettingStore = lazy(() => import('../pages/Admin/SettingStore'));
 const DashboardAdmin = lazy(() => import('../pages/Admin/DashboardAdmin'));
 const Riwayat = lazy(() => import('../pages/Admin/Riwayat'));
 const RiwayatDetail = lazy(() => import('../pages/Admin/RiwayatDetail'));
+const Dashboard = lazy(() => import('../pages/SuperAdmin/Dashboard'));
 
 const routes = [
     // dashboard
@@ -217,6 +218,10 @@ const routes = [
     {
         path: '/riwayat-detail',
         element: <RiwayatDetail />,
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
     },
     // finance page
     {
