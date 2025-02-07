@@ -119,6 +119,7 @@ const DashboardAdmin = lazy(() => import('../pages/Admin/DashboardAdmin'));
 const Riwayat = lazy(() => import('../pages/Admin/Riwayat'));
 const RiwayatDetail = lazy(() => import('../pages/Admin/RiwayatDetail'));
 const Dashboard = lazy(() => import('../pages/SuperAdmin/Dashboard'));
+const KeluarMasuk = lazy(() => import('../pages/Admin/KeluarMasuk'));
 
 const routes = [
     // dashboard
@@ -222,6 +223,10 @@ const routes = [
     {
         path: '/dashboard',
         element: <Dashboard />,
+    },
+    {
+        path: '/keluar-masuk',
+        element: <KeluarMasuk />,
     },
     // finance page
     {

@@ -329,6 +329,15 @@ const Sidebar = () => {
                                 </NavLink>
                             </li>
 
+                            <li className="nav-item">
+                                <NavLink to="/keluar-masuk" className="group">
+                                    <div className="flex items-center">
+                                        <IconMenuChat className="group-hover:!text-primary shrink-0" />
+                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Keluar Masuk')}</span>
+                                    </div>
+                                </NavLink>
+                            </li>
+
                             <li className="menu nav-item">
                                 <button type="button" className={`${currentMenu === 'component' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('component')}>
                                     <div className="flex items-center">
