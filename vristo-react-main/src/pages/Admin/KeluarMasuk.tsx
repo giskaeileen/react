@@ -231,19 +231,73 @@ const Export = () => {
             </div> */}
             {/* <h1 className="font-bold text-xl dark:text-white-light">Report  </h1> */}
             <div className="flex items-center justify-between mb-5">
-                <h1 className="font-bold text-xl dark:text-white-light">Report</h1>
+                <h1 className="font-bold text-xl dark:text-white-light">product In and Out Reports</h1>
                 <div className="flex items-center gap-2 ml-auto">
                     {/* <button type="button" onClick={() => exportTable('txt')} className="btn btn-primary btn-sm m-1">
                         <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
                         TXT
                     </button> */}
 
-                    <button type="submit" className="btn btn-primary m-1">
+                    {/* <button type="submit" className="btn btn-primary m-1">
+                        <IconLoader className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
+                        Filter
+                    </button> */}
+
+                    {/* <button type="button" className="btn btn-primary m-1" onClick={handleDownloadExcel}>
+                        <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
+                        Excel
+                    </button>
+
+                    <button type="button" onClick={() => exportTable('print')} className="btn btn-primary m-1">
+                        <IconPrinter className="ltr:mr-2 rtl:ml-2" />
+                        Print
+                    </button> */}
+                </div>
+            </div>
+
+
+            <div className="panel mt-6">
+                <div className="flex flex-col gap-5">
+                    <div className="flex items-center gap-10 mt-5">
+                        <label htmlFor="dari" className="text-sm w-28">Dari Tanggal</label>
+                        <Flatpickr 
+                            value={date1} 
+                            options={{ dateFormat: 'Y-m-d', position: isRtl ? 'auto right' : 'auto left' }} 
+                            className="form-input w-full" 
+                            onChange={(date) => setDate1(date)} 
+                        />
+                    </div>
+
+                    <div className="flex items-center gap-10">
+                        <label htmlFor="sampai" className="text-sm w-28">Sampai Tanggal</label>
+                        <Flatpickr 
+                            value={date2} 
+                            options={{ dateFormat: 'Y-m-d', position: isRtl ? 'auto right' : 'auto left' }} 
+                            className="form-input w-full" 
+                            onChange={(date) => setDate2(date)} 
+                        />
+                    </div>
+
+                    <div className="flex items-center gap-10">
+                        <label htmlFor="kategori" className="text-sm w-28">Kode Surat Jalan</label>
+                        <select id="kategori" className="form-input w-full">
+                            <option value="">Pilih Kode Surat Jalan</option>
+                            <option value="1">1234566</option>
+                            <option value="2">3457487</option>
+                            <option value="3">3984738</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" className="btn btn-primary w-fit">
                         <IconLoader className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
                         Filter
                     </button>
+                </div>
+            </div>
 
-                    <button type="button" className="btn btn-primary m-1" onClick={handleDownloadExcel}>
+            <div className="panel mt-6">
+                <div className="flex md:items-center justify-end md:flex-row flex-col mb-5 gap-5">
+                <button type="button" className="btn btn-primary m-1" onClick={handleDownloadExcel}>
                         <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
                         Excel
                     </button>
@@ -252,66 +306,6 @@ const Export = () => {
                         <IconPrinter className="ltr:mr-2 rtl:ml-2" />
                         Print
                     </button>
-                </div>
-            </div>
-
-            {/* <div className="panel mt-6">
-                <div className="flex items-end gap-4">
-                    <div className="space-y-2">
-                        <label htmlFor="dari" className="text-sm block">Dari Tanggal</label>
-                        <Flatpickr value={date1} options={{ dateFormat: 'Y-m-d', position: isRtl ? 'auto right' : 'auto left' }} className="form-input w-50" onChange={(date) => setDate1(date)} />
-                    </div>
-                    <div className="space-y-2">
-                        <label htmlFor="sampai" className="text-sm block">Sampai Tanggal</label>
-                        <Flatpickr value={date2} options={{ dateFormat: 'Y-m-d', position: isRtl ? 'auto right' : 'auto left' }} className="form-input w-50" onChange={(date) => setDate2(date)} />
-                    </div>
-                    <button type="submit" className="btn btn-primary h-fit">
-                        Submit
-                    </button>
-                </div>
-            </div> */}
-
-            <div className="panel mt-6">
-                <div className="flex flex-col gap-5">
-                    <div className="flex items-center gap-5">
-                        <label htmlFor="dari" className="text-sm w-28">Dari Tanggal</label>
-                        <Flatpickr 
-                            value={date1} 
-                            options={{ dateFormat: 'Y-m-d', position: isRtl ? 'auto right' : 'auto left' }} 
-                            className="form-input w-80" 
-                            onChange={(date) => setDate1(date)} 
-                        />
-                    </div>
-
-                    <div className="flex items-center gap-5">
-                        <label htmlFor="sampai" className="text-sm w-28">Sampai Tanggal</label>
-                        <Flatpickr 
-                            value={date2} 
-                            options={{ dateFormat: 'Y-m-d', position: isRtl ? 'auto right' : 'auto left' }} 
-                            className="form-input w-80" 
-                            onChange={(date) => setDate2(date)} 
-                        />
-                    </div>
-
-                    <div className="flex items-center gap-5">
-                        <label htmlFor="kategori" className="text-sm w-28">Kode Surat Jalan</label>
-                        <select id="kategori" className="form-input w-80">
-                            <option value="">Pilih Kode Surat Jalan</option>
-                            <option value="1">1234566</option>
-                            <option value="2">3457487</option>
-                            <option value="3">3984738</option>
-                        </select>
-                    </div>
-
-                    {/* <button type="submit" className="btn btn-primary w-fit">
-                        Filter
-                    </button> */}
-                </div>
-            </div>
-
-
-            <div className="panel mt-6">
-                <div className="flex md:items-center justify-between md:flex-row flex-col mb-5 gap-5">
                     <input type="text" className="form-input w-auto" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
                 </div>
                 <div className="datatables">
